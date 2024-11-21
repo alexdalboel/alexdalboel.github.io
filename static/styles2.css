@@ -1,0 +1,67 @@
+html {
+  overflow-y: scroll; /* Ensures the scrollbar is always visible */
+}
+
+body {
+  margin: 0;
+}
+
+
+.social-icon {
+  opacity: 1;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.profile-pic {
+  opacity: 1;
+  transition: opacity 0.3s;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.intext-link {
+  &:hover {
+    opacity: 0.7;
+  }
+  background-color: rgba(175, 255, 175, 0.489);
+  color: rgb(1, 130, 1);
+  text-decoration: none;
+ }
+
+ .title-link {
+  text-decoration: none;
+  color: #757575;
+  transition: opacity 0.3s;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+ }
+
+ .card-body {
+  background-color: rgba(247, 247, 247, 0.489); ;
+  border-style: none;
+}
+
+.scrollable-container {
+  max-height: 300px; /* Adjust height as needed */
+  overflow-y: auto;
+  padding-right: 10px; /* Optional: for better appearance */
+  scrollbar-width: thin; /* Optional: for narrower scrollbars */
+}
+.scrollable-container::-webkit-scrollbar {
+  width: 6px; /* Optional: narrow scrollbar for WebKit browsers */
+}
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: #888; /* Optional: scrollbar thumb color */
+  border-radius: 10px;
+}
+.scrollable-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Optional: thumb hover color */
+}
