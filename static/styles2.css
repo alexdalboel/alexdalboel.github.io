@@ -65,3 +65,7 @@ body {
 .scrollable-container::-webkit-scrollbar-thumb:hover {
   background: #555; /* Optional: thumb hover color */
 }
+
+.social-icon{
+  text-decoration: none;
+}
