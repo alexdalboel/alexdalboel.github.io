@@ -45,8 +45,13 @@ body {
  }
 
  .card-body {
-  background-color: rgba(247, 247, 247, 0.489); ;
+  background-color: rgba(247, 247, 247, 0.489); 
   border-style: none;
+  transition: opacity 0.3s;
+  
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .scrollable-container {
@@ -54,6 +59,7 @@ body {
   overflow-y: auto;
   padding-right: 10px; /* Optional: for better appearance */
   scrollbar-width: thin; /* Optional: for narrower scrollbars */
+  
 }
 .scrollable-container::-webkit-scrollbar {
   width: 6px; /* Optional: narrow scrollbar for WebKit browsers */
@@ -69,3 +75,5 @@ body {
 .social-icon{
   text-decoration: none;
 }
+
+
