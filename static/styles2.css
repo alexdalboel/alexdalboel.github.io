@@ -82,6 +82,15 @@ body {
   padding-right: 10px; /* Optional: for better appearance */
 }
 
+
+.scrollable-column {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollable-column::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
 .scrollable-column::-webkit-scrollbar {
   display: none;  /* Hides the scrollbar buttons */
 }
