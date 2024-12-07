@@ -25,6 +25,10 @@ body {
   }
 }
 
+.social-icon{
+  text-decoration: none;
+}
+
 .intext-link {
   &:hover {
     opacity: 0.7;
@@ -56,24 +60,53 @@ body {
 
 .scrollable-container {
   max-height: 300px; /* Adjust height as needed */
-  overflow-y: auto;
+  overflow: hidden; /* Hide the scrollbar itself */
   padding-right: 10px; /* Optional: for better appearance */
-  scrollbar-width: thin; /* Optional: for narrower scrollbars */
-  
-}
-.scrollable-container::-webkit-scrollbar {
-  width: 6px; /* Optional: narrow scrollbar for WebKit browsers */
-}
-.scrollable-container::-webkit-scrollbar-thumb {
-  background-color: #888; /* Optional: scrollbar thumb color */
-  border-radius: 10px;
-}
-.scrollable-container::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Optional: thumb hover color */
+  position: relative;
 }
 
-.social-icon{
-  text-decoration: none;
+.scrollable-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;  /* Allows scrolling */
+  pointer-events: none;  /* Ensures the scrolling area is still interactive */
 }
+
+.scrollable-container {
+  max-height: 300px; /* Adjust height as needed */
+  overflow-y: auto; /* Keeps scrolling enabled */
+  padding-right: 10px; /* Optional: for better appearance */
+}
+
+.scrollable-column::-webkit-scrollbar {
+  display: none;  /* Hides the scrollbar buttons */
+}
+
+.scrollable-column-wrapper {
+  position: relative;
+  max-height: 300px;  /* Adjust based on your requirements */
+}
+
+.scrollable-column {
+  max-height: 100%;
+  overflow-y: scroll;  /* Keeps scrolling enabled */
+  padding-bottom: 20px;  /* Optional: space between content and fade */
+}
+
+.scrollable-column-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;  /* Adjust to control how much fading you want */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255));
+  pointer-events: none;  /* Ensures that the fade effect doesn't block interactions */
+}
+
 
 
