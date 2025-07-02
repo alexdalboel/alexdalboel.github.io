@@ -117,5 +117,11 @@ body {
   pointer-events: none;  /* Ensures that the fade effect doesn't block interactions */
 }
 
+#about, #experience, #education, #skills {
+  scroll-margin-top: 80px;
+}
+
+
+
 
 

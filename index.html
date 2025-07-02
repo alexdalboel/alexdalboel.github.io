@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alex Dalboel</title>
+  <title>Alex Alonso Dalbøl</title>
   <meta name="description" content="Data Science portfolio">
   <link rel="stylesheet" href="static/styles2.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,14 +12,43 @@
 </head>
 
 <body>
-  <div class="container" style="margin-top: 100px;">
-    <div class="row justify-content-center text-center text-md-start">
-      <!-- Profile Picture Column -->
-      <div class="col-12 col-md-4 text-center">
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="container">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#about" data-key="nav_profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#experience" data-key="nav_experience">Work Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#education" data-key="nav_education">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills" data-key="nav_skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects" data-key="nav_projects">Projects</a>
+          </li>
+        </ul>
+        <div class="ms-3">
+          <button id="lang-en" class="btn btn-sm btn-outline-secondary me-1">EN</button>
+          <button id="lang-da" class="btn btn-sm btn-outline-secondary">DA</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="margin-top: 80px;">
+    <div class="row justify-content-center" id="profile-header">
+      <!-- Profile Column -->
+      <div class="col-12 col-md-8 text-center">
         <img src="static/profile-pic2.png" class="profile-pic" alt="profile-pic" class="img-fluid" width="130">
         <a href="index.html" class="title-link">
-          <h1>Alex Dalboel*</h1>
+          <h1>Alex Alonso Dalbøl</h1>
         </a>
+        <p class="text-muted" data-key="contact_info">42657699 | alexalonso@live.dk | Odense</p>
         <div class="text-center gap-2">
           <a href="https://github.com/alexdalboel" class="social-icon" target="_blank">
             <img src="static/github.png" alt="GitHub" width="35">
@@ -27,20 +56,122 @@
           <a href="https://www.linkedin.com/in/alex-alonso-dalb%C3%B8l-7107a2218/" class="social-icon" target="_blank">
             <img src="static/linkedin.png" alt="LinkedIn" width="35">
           </a>
-          <a href="static/cv.pdf" class="social-icon" target="_blank">
-            <img src="static/cv.png" alt="CV" width="35">
-          </a>
         </div>
       </div>
+    </div>
 
-      <!-- Text Column -->
-      <div class="col-12 col-md-4 mt-4 mt-md-0 animate__animated animate__fadeIn">
-        <p>Data Science MSc student based in Odense, DK.</p>
-        <p>Currently working as a Teaching Assistant at the <a href="https://sdu.dk" class="intext-link">University of Southern Denmark</a>, for the courses Linear Algebra and Statistics.</p>
-        <p>I am a former teacher transitioning into the world of Data Science, with a special interest in visualization and explainable AI.</p>
-        <p>Take a look at some recent <a href="projects.html" class="intext-link">projects</a>, or feel free to reach out.</p>
+    <div class="row justify-content-center mt-4">
+      <div class="col-12 col-md-8">
+        <!-- About Section -->
+        <div id="about" class="animate__animated animate__fadeIn pt-4 mt-4">
+          <h2 data-key="profile_title">Profile</h2>
+          <p data-key="profile_text">Data Science graduate with a strong foundation in AI, computer vision, and data analysis, complemented by a background in education and digital humanities. Experienced in developing human-in-the-loop systems, object detection models, and interactive data tools. Focused on leveraging technology to support research, interpret complex data, and create meaningful user experiences. Skilled in Python, machine learning, and web app development, with a proven ability to communicate complex ideas to diverse audiences.</p>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experience" class="mt-4 animate__animated animate__fadeIn pt-4">
+          <h2 data-key="experience_title">Work Experience</h2>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title" data-key="ta_job_title">Teaching Assistant</h5>
+              <h6 class="card-subtitle mb-2 text-muted" data-key="ta_job_location_date">University of Southern Denmark - Odense | 01/09/2024 - 23/06/2025</h6>
+              <p class="card-text" data-key="ta_job_desc">Delivered weekly tutorials and Q&A sessions, helping students grasp foundational concepts in linear algebra and statistics relevant to data science. Furthermore I designed supplementary learning materials and visual aids to simplify complex topics such as eigenvalues, matrix operations, probability distributions, and hypothesis testing. Supported the integration of Python and Jupyter Notebooks into coursework, helping students connect mathematical theory with data analysis in practice.</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title" data-key="teacher_job_title">Teacher</h5>
+              <h6 class="card-subtitle mb-2 text-muted" data-key="teacher_job_location_date">Odense Kommune - Odense | 01/02/2023 - 26/06/2026</h6>
+              <p class="card-text" data-key="teacher_job_desc">Taught 7th grade in mathematics, English, history and physical education. Fostered a positive and inclusive classroom environment, encouraging participation, collaboration, and critical thinking across all subjects. Collaborated with colleagues and parents to support student well-being and academic development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Section -->
+        <div id="education" class="mt-4 animate__animated animate__fadeIn pt-4">
+          <h2 data-key="education_title">Education</h2>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title" data-key="msc_title">MSc, Data Science</h5>
+              <h6 class="card-subtitle mb-2 text-muted" data-key="msc_location_date">University of Southern Denmark - Odense | 23/06/2025</h6>
+              <p class="card-text" data-key="msc_desc">Master Thesis - "Zero-shot Object Detection in Holocaust-related Art: Assessing Model Performance and Human-In-The-Loop Enhancement"</p>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title" data-key="ba_title">BA, Education</h5>
+              <h6 class="card-subtitle mb-2 text-muted" data-key="ba_location_date">University College Lillebaelt - Odense | 15/01/2023</h6>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="skills" class="mt-4 animate__animated animate__fadeIn pt-4">
+          <h2 data-key="skills_title">Skills</h2>
+          <div class="card mb-3">
+            <div class="card-body">
+                <h6 data-key="skills_cat_programming">Programming</h6>
+                <span class="badge bg-primary">Python</span>
+                <span class="badge bg-primary">JavaScript</span>
+                <span class="badge bg-primary">HTML/CSS</span>
+                <hr>
+                <h6 data-key="skills_cat_machine">Machine Learning</h6>
+                <span class="badge bg-primary">PyTorch</span>
+                <span class="badge bg-primary">TensorFlow</span>
+                <span class="badge bg-primary">Transfer Learning</span>
+                <span class="badge bg-primary">Zero-shot Detection</span>
+                <hr>
+                <h6 data-key="skills_cat_tools">Tools & Platforms</h6>
+                <span class="badge bg-primary">GitHub</span>
+                <span class="badge bg-primary">Google Colab</span>
+                <span class="badge bg-primary">Jupyter Notebook</span>
+                <span class="badge bg-primary">Docker</span>
+                <hr>
+                <h6 data-key="skills_cat_web">Web Development</h6>
+                <span class="badge bg-primary">Flask</span>
+                <span class="badge bg-primary">Dash</span>
+                <span class="badge bg-primary">Plotly</span>
+                <span class="badge bg-primary">Render</span>
+                <span class="badge bg-primary">Node.js</span>
+                <hr>
+                <h6 data-key="skills_cat_cv">Computer Vision</h6>
+                <span class="badge bg-primary">OpenCV</span>
+                <span class="badge bg-primary">OWLv2</span>
+                <span class="badge bg-primary">GroundingDINO</span>
+                <span class="badge bg-primary">Object Detection Pipelines</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects" class="mt-4 animate__animated animate__fadeIn pt-4">
+          <h2 data-key="projects_title">Projects</h2>
+          <div class="card mb-3">
+            <div class="card-body d-flex align-items-center">
+              <img src="static/Resume Gener8.svg" alt="Resume Gener8 Logo" width="60" class="me-3">
+              <div>
+                <h5 class="card-title mb-1">
+                  <a href="https://resumegener8.onrender.com/" target="_blank" style="text-decoration:none; color:inherit;">Resume Gener8</a>
+                </h5>
+                <p class="mb-1">Welcome to your modern resume builder!<br>
+                Quickly create a professional, AI-enhanced resume tailored to your dream job. Fill in your details, add your experience, and download a beautiful PDF in seconds.</p>
+                <small class="text-muted">Tech: JavaScript, HTML/CSS, Node.js, OpenAI API, Docker (Gotenborg PDF)</small>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title mb-1">
+                <a href="https://github.com/alexdalboel/Patent_classifier" target="_blank" style="text-decoration:none; color:inherit;">Patent Classifier</a>
+              </h5>
+              <p class="mb-1">This project involves building a model to classify patents into industry sectors based on their text summaries, using the PatensView 2024 dataset. The main exploration and evaluation was made in the expl.ipynb notebook, and the concepts derived from that work, were simply implemented to a Dash-plotly application.</p>
+              <small class="text-muted">Tech: Dash, Plotly, Python, NLP</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <script src="static/lang.js"></script>
 </body>
 </html>
