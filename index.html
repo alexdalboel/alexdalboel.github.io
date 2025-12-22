@@ -5,170 +5,330 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alex Alonso Dalbøl</title>
   <meta name="description" content="Data Science portfolio">
-  <link rel="stylesheet" href="static/styles2.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f8f9fa;
+      color: #2c3e50;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 320px;
+      height: 100vh;
+      background: white;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 1px solid #e9ecef;
+      overflow-y: auto;
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #f8f9fa;
+    }
+
+    .sidebar h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .sidebar .contact-info {
+      text-align: center;
+      font-size: 13px;
+      color: #6c757d;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .social-links a {
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .social-links a:hover {
+      opacity: 1;
+    }
+
+    .sidebar-nav {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      padding: 12px 20px;
+      color: #6c757d;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .sidebar-nav a:hover {
+      background: #f8f9fa;
+      color: #2c3e50;
+    }
+
+    .lang-switcher {
+      margin-top: auto;
+      padding-top: 20px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-switcher button {
+      padding: 6px 16px;
+      border: 1px solid #dee2e6;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.3s;
+    }
+
+    .lang-switcher button:hover {
+      background: #f8f9fa;
+    }
+
+    .main-content {
+      margin-left: 320px;
+      padding: 60px 80px;
+      max-width: 1200px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      color: #2c3e50;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: #0d6efd;
+    }
+
+    .card {
+      border: none;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .card h5 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2c3e50;
+    }
+
+    .card h6 {
+      font-size: 14px;
+      color: #6c757d;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #495057;
+      margin: 0;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      margin: 4px;
+      font-weight: 500;
+      font-size: 13px;
+      border-radius: 6px;
+    }
+
+    .skill-category {
+      margin-bottom: 20px;
+    }
+
+    .skill-category h6 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #495057;
+    }
+
+    .project-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: contain;
+      margin-right: 20px;
+      flex-shrink: 0;
+    }
+
+    .project-card {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .project-card a {
+      color: #2c3e50;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .project-card a:hover {
+      color: #0d6efd;
+    }
+
+    @media (max-width: 992px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .main-content {
+        margin-left: 0;
+        padding: 40px 20px;
+      }
+
+      .lang-switcher {
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <div class="container">
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#about" data-key="nav_profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#experience" data-key="nav_experience">Work Experience</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#education" data-key="nav_education">Education</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#skills" data-key="nav_skills">Skills</a>
-          </li>
-        </ul>
-        <div class="ms-3">
-          <button id="lang-en" class="btn btn-sm btn-outline-secondary me-1">EN</button>
-          <button id="lang-da" class="btn btn-sm btn-outline-secondary">DA</button>
-        </div>
-      </div>
+  <!-- Fixed Sidebar -->
+  <div class="sidebar">
+    <img src="static/profile-pic2.png" class="profile-pic" alt="Alex Alonso Dalbøl">
+    <h1>Alex Alonso Dalbøl</h1>
+    <div class="contact-info">
+      42657699<br>
+      alexalonso@live.dk<br>
+      Odense, Denmark
     </div>
-  </nav>
-
-  <div class="container" style="margin-top: 80px;">
-    <div class="row justify-content-center" id="profile-header">
-      <!-- Profile Column -->
-      <div class="col-12 col-md-8 text-center">
-        <img src="static/profile-pic2.png" class="profile-pic" alt="profile-pic" class="img-fluid" width="130">
-        <a href="index.html" class="title-link">
-          <h1>Alex Alonso Dalbøl</h1>
-        </a>
-        <p class="text-muted" data-key="contact_info">42657699 | alexalonso@live.dk | Odense</p>
-        <div class="text-center gap-2">
-          <a href="https://github.com/alexdalboel" class="social-icon" target="_blank">
-            <img src="static/github.png" alt="GitHub" width="35">
-          </a>
-          <a href="https://www.linkedin.com/in/alex-alonso-dalb%C3%B8l-7107a2218/" class="social-icon" target="_blank">
-            <img src="static/linkedin.png" alt="LinkedIn" width="35">
-          </a>
-        </div>
-      </div>
+    
+    <div class="social-links">
+      <a href="https://github.com/alexdalboel" target="_blank">
+        <img src="static/github.png" alt="GitHub" width="32">
+      </a>
+      <a href="https://www.linkedin.com/in/alex-alonso-dalb%C3%B8l-7107a2218/" target="_blank">
+        <img src="static/linkedin.png" alt="LinkedIn" width="32">
+      </a>
     </div>
 
-    <div class="row justify-content-center mt-4">
-      <div class="col-12 col-md-8">
-        <!-- About Section -->
-        <div id="about" class="animate__animated animate__fadeIn pt-4 mt-4">
-          <h2 data-key="profile_title">Profile</h2>
-          <p data-key="profile_text">Data Science graduate with a strong foundation in AI, computer vision, and data analysis, complemented by a background in education and digital humanities. Experienced in developing human-in-the-loop systems, object detection models, and interactive data tools. Focused on leveraging technology to support research, interpret complex data, and create meaningful user experiences. Skilled in Python, machine learning, and web app development, with a proven ability to communicate complex ideas to diverse audiences.</p>
-        </div>
+    <nav class="sidebar-nav">
+      <a href="#about">Profile</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#publications">Publications</a>
+    </nav>
 
-        <!-- Experience Section -->
-        <div id="experience" class="mt-4 animate__animated animate__fadeIn pt-4">
-          <h2 data-key="experience_title">Work Experience</h2>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title" data-key="ta_job_title">Teaching Assistant</h5>
-              <h6 class="card-subtitle mb-2 text-muted" data-key="ta_job_location_date">University of Southern Denmark - Odense | 01/09/2024 - 23/06/2025</h6>
-              <p class="card-text" data-key="ta_job_desc">Delivered weekly tutorials and Q&A sessions, helping students grasp foundational concepts in linear algebra and statistics relevant to data science. Furthermore I designed supplementary learning materials and visual aids to simplify complex topics such as eigenvalues, matrix operations, probability distributions, and hypothesis testing. Supported the integration of Python and Jupyter Notebooks into coursework, helping students connect mathematical theory with data analysis in practice.</p>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title" data-key="teacher_job_title">Teacher</h5>
-              <h6 class="card-subtitle mb-2 text-muted" data-key="teacher_job_location_date">Odense Kommune - Odense | 01/02/2023 - 26/06/2026</h6>
-              <p class="card-text" data-key="teacher_job_desc">Taught 7th grade in mathematics, English, history and physical education. Fostered a positive and inclusive classroom environment, encouraging participation, collaboration, and critical thinking across all subjects. Collaborated with colleagues and parents to support student well-being and academic development.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education Section -->
-        <div id="education" class="mt-4 animate__animated animate__fadeIn pt-4">
-          <h2 data-key="education_title">Education</h2>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title" data-key="msc_title">MSc, Data Science</h5>
-              <h6 class="card-subtitle mb-2 text-muted" data-key="msc_location_date">University of Southern Denmark - Odense | 23/06/2025</h6>
-              <p class="card-text" data-key="msc_desc">Master Thesis - "Zero-shot Object Detection in Holocaust-related Art: Assessing Model Performance and Human-In-The-Loop Enhancement"</p>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title" data-key="ba_title">BA, Education</h5>
-              <h6 class="card-subtitle mb-2 text-muted" data-key="ba_location_date">University College Lillebaelt - Odense | 15/01/2023</h6>
-            </div>
-          </div>
-        </div>
-
-        <!-- Skills Section -->
-        <div id="skills" class="mt-4 animate__animated animate__fadeIn pt-4">
-          <h2 data-key="skills_title">Skills</h2>
-          <div class="card mb-3">
-            <div class="card-body">
-                <h6 data-key="skills_cat_programming">Programming</h6>
-                <span class="badge bg-primary">Python</span>
-                <span class="badge bg-primary">JavaScript</span>
-                <span class="badge bg-primary">HTML/CSS</span>
-                <hr>
-                <h6 data-key="skills_cat_machine">Machine Learning</h6>
-                <span class="badge bg-primary">PyTorch</span>
-                <span class="badge bg-primary">TensorFlow</span>
-                <span class="badge bg-primary">Transfer Learning</span>
-                <span class="badge bg-primary">Zero-shot Detection</span>
-                <hr>
-                <h6 data-key="skills_cat_tools">Tools & Platforms</h6>
-                <span class="badge bg-primary">GitHub</span>
-                <span class="badge bg-primary">Google Colab</span>
-                <span class="badge bg-primary">Jupyter Notebook</span>
-                <span class="badge bg-primary">Docker</span>
-                <hr>
-                <h6 data-key="skills_cat_web">Web Development</h6>
-                <span class="badge bg-primary">Flask</span>
-                <span class="badge bg-primary">Dash</span>
-                <span class="badge bg-primary">Plotly</span>
-                <span class="badge bg-primary">Render</span>
-                <span class="badge bg-primary">Node.js</span>
-                <hr>
-                <h6 data-key="skills_cat_cv">Computer Vision</h6>
-                <span class="badge bg-primary">OpenCV</span>
-                <span class="badge bg-primary">OWLv2</span>
-                <span class="badge bg-primary">GroundingDINO</span>
-                <span class="badge bg-primary">Object Detection Pipelines</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Projects Section -->
-        <div id="projects" class="mt-4 animate__animated animate__fadeIn pt-4">
-          <h2>Projects</h2>
-          <div class="card mb-3">
-            <div class="card-body d-flex align-items-center">
-              <img src="static/Resume Gener8.svg" alt="Resume Gener8 Logo" width="60" class="me-3">
-              <div>
-                <h5 class="card-title mb-1">
-                  <a href="https://resumegener8.onrender.com/" target="_blank" style="text-decoration:none; color:inherit;">Resume Gener8</a>
-                </h5>
-                <p class="mb-1">Welcome to your modern resume builder!<br>
-                Quickly create a professional, AI-enhanced resume tailored to your dream job. Fill in your details, add your experience, and download a beautiful PDF in seconds.</p>
-                <small class="text-muted">Tech: JavaScript, HTML/CSS, Node.js, OpenAI API, Docker (Gotenborg PDF)</small>
-              </div>
-            </div>
-          </div>
-          <div class="card mb-3">
-            <div class="card-body">
-              <h5 class="card-title mb-1">
-                <a href="https://github.com/alexdalboel/Patent_classifier" target="_blank" style="text-decoration:none; color:inherit;">Patent Classifier</a>
-              </h5>
-              <p class="mb-1">This project involves building a model to classify patents into industry sectors based on their text summaries, using the PatensView 2024 dataset. The main exploration and evaluation was made in the expl.ipynb notebook, and the concepts derived from that work, were simply implemented to a Dash-plotly application.</p>
-              <small class="text-muted">Tech: Dash, Plotly, Python, NLP</small>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="lang-switcher">
+      <button id="lang-en">EN</button>
+      <button id="lang-da">DA</button>
     </div>
   </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- About Section -->
+    <section id="about">
+      <h2>Profile</h2>
+      <div class="card">
+        <p>Data Science graduate with a strong foundation in AI, computer vision, and data analysis, complemented by a background in education and digital humanities. Experienced in developing human-in-the-loop systems, object detection models, and interactive data tools. Focused on leveraging technology to support research, interpret complex data, and create meaningful user experiences. Skilled in Python, machine learning, and web app development, with a proven ability to communicate complex ideas to diverse audiences.</p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <h2>Work Experience</h2>
+      <div class="card">
+        <h5>Research Assistant</h5>
+        <h6>Institut for Design, Medier og Uddannelsesvidenskab - Odense | Oct 2025 - Present</h6>
+        <p>Contributing to research projects in educational science, focusing on data collection, analysis, and research at the intersection of technology, learning, and society.</p>
+      </div>
+      <div class="card">
+        <h5>Teaching Assistant</h5>
+        <h6>University of Southern Denmark - Odense | Sep 2024 - Jun 2025</h6>
+        <p>Delivered weekly tutorials and Q&A sessions, helping students grasp foundational concepts in linear algebra and statistics relevant to data science. Designed supplementary learning materials and visual aids to simplify complex topics such as eigenvalues, matrix operations, probability distributions, and hypothesis testing. Supported the integration of Python and Jupyter Notebooks into coursework, helping students connect mathematical theory with data analysis in practice.</p>
+      </div>
+      <div class="card">
+        <h5>Teacher</h5>
+        <h6>Odense Kommune - Odense | Feb 2023 - Jun 2026</h6>
+        <p>Taught 7th grade in mathematics, English, history and physical education. Fostered a positive and inclusive classroom environment, encouraging participation, collaboration, and critical thinking across all subjects. Collaborated with colleagues and parents to support student well-being and academic development.</p>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card">
+        <h5>MSc, Data Science</h5>
+        <h6>University of Southern Denmark - Odense | Jun 2025</h6>
+        <p>Master Thesis: "Zero-shot Object Detection in Holocaust-related Art: Assessing Model Performance and Human-In-The-Loop Enhancement"</p>
+      </div>
+      <div class="card">
+        <h5>BA, Education</h5>
+        <h6>University College Lillebaelt - Odense | Jan 2023</h6>
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="card">
+        <p class="text-muted">Publications will be listed here.</p>
+      </div>
+    </section>
+  </div>
+
   <script src="static/lang.js"></script>
 </body>
 </html>
