@@ -3,576 +3,458 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alex Alonso Dalbøl</title>
-  <meta name="description" content="Data Science portfolio">
+  <title>Alex Alonso Dalbøl — Data Science &amp; educational research</title>
+  <meta name="description" content="Alex Alonso Dalbøl — data scientist and research assistant at SDU. AI, computer vision and data analysis, with a background in education.">
+  <meta name="author" content="Alex Alonso Dalbøl">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Alex Alonso Dalbøl">
+  <meta property="og:description" content="Data scientist and research assistant at SDU. AI, computer vision and data analysis, with a background in education.">
+  <meta property="og:url" content="https://alexdalboel.github.io/">
+  <meta name="twitter:card" content="summary">
+
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E0F11" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://alexdalboel.github.io/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2316181C'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial,sans-serif' font-weight='bold' font-size='16' fill='%23FFFFFF' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --black: #111111;
-      --mid: #6B7280;
-      --light: #D1D5DB;
-      --bg: #FAFAFA;
-      --white: #FFFFFF;
-      --blue: #2563EB;
-      --border: #E5E7EB;
+      --paper:   #FFFFFF;
+      --ink:     #16181C;
+      --ink-mid: #5B6169;
+      --ink-dim: #9298A0;
+      --rule:    #E8EAED;
+      --mark:    #C2410C;
+      --wash:    #F4F5F7;
+      --focus:   #C2410C;
     }
 
-    html {
-      scroll-behavior: smooth;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper:   #0E0F11;
+        --ink:     #EDEEF0;
+        --ink-mid: #9BA1A9;
+        --ink-dim: #6B7178;
+        --rule:    #232528;
+        --mark:    #F97A4D;
+        --wash:    #17191C;
+        --focus:   #F97A4D;
+      }
     }
+
+    html { -webkit-text-size-adjust: 100%; }
 
     body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--black);
-      line-height: 1.6;
+      font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+      font-size: 15px;
       -webkit-font-smoothing: antialiased;
+      font-variant-numeric: tabular-nums;
     }
 
-    /* ── TOP NAV ── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(250, 250, 250, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
+    /* one orchestrated entrance, once */
+    .page { animation: settle .5s ease-out both; }
+    @keyframes settle { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-    .header-inner {
-      max-width: 760px;
+    .page {
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 0 32px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 64px 40px 72px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 0 64px;
+      align-items: start;
     }
 
-    .header-name {
-      font-size: 14px;
+    /* ── LEFT RAIL ───────────────────────────── */
+    .rail { position: sticky; top: 64px; }
+
+    .name {
       font-weight: 600;
-      letter-spacing: -0.2px;
-      color: var(--black);
-      text-decoration: none;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin-bottom: 10px;
     }
 
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-
-    nav a {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--mid);
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: color 0.15s, background 0.15s;
-      letter-spacing: 0.02em;
-    }
-
-    nav a:hover {
-      color: var(--black);
-      background: var(--border);
-    }
-
-    .lang-switcher {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-left: 16px;
-      padding-left: 16px;
-      border-left: 1px solid var(--border);
-    }
-
-    .lang-switcher button {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
+    .role {
+      font-size: 14px;
       font-weight: 500;
-      letter-spacing: 0.05em;
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: var(--mid);
-      padding: 4px 8px;
-      border-radius: 4px;
-      transition: all 0.15s;
-    }
-
-    .lang-switcher button:hover {
-      color: var(--black);
-    }
-
-    .lang-switcher button.active {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    /* ── MAIN ── */
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 80px 32px 160px;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      margin-bottom: 96px;
-      opacity: 0;
-      animation: rise 0.6s ease 0.05s forwards;
-    }
-
-    .hero-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--blue);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      color: var(--mark);
       margin-bottom: 20px;
     }
 
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 600;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      color: var(--black);
+    .bio {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--ink-mid);
       margin-bottom: 24px;
+      max-width: 34em;
     }
 
-    .hero-bio {
-      font-size: 16px;
-      color: #374151;
-      line-height: 1.75;
-      max-width: 580px;
-      margin-bottom: 32px;
-    }
+    .contact { list-style: none; display: grid; gap: 5px; font-size: 13.5px; }
 
-    .hero-meta {
-      display: flex;
+    .contact a, .contact span { color: var(--ink); text-decoration: none; }
+
+    .contact a {
+      border-bottom: 1px solid var(--rule);
+      display: inline-flex;
       align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
+      gap: 7px;
+      width: fit-content;
+      transition: border-color .15s, color .15s;
     }
 
-    .hero-contact {
-      font-family: 'DM Mono', monospace;
+    .contact a:hover { border-bottom-color: var(--mark); color: var(--mark); }
+    .contact svg { width: 14px; height: 14px; flex: none; opacity: .65; }
+    .contact .place { color: var(--ink-dim); }
+
+    .lang {
+      display: inline-flex;
+      gap: 2px;
+      margin-top: 26px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      padding: 2px;
+    }
+
+    .lang button {
+      font: inherit;
       font-size: 12px;
-      color: var(--mid);
-      letter-spacing: 0.02em;
+      font-weight: 500;
+      letter-spacing: .04em;
+      padding: 3px 12px;
+      border: 0;
+      border-radius: 999px;
+      background: none;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: background .15s, color .15s;
     }
 
-    .hero-links {
-      display: flex;
-      gap: 16px;
-    }
+    .lang button:hover { color: var(--ink); }
+    .lang button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
-    .hero-links a {
-      font-family: 'DM Mono', monospace;
+    /* ── RIGHT COLUMN ────────────────────────── */
+    .stack { display: grid; gap: 40px; }
+
+    h2 {
       font-size: 12px;
-      color: var(--mid);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.15s;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: var(--ink-mid);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 4px;
     }
 
-    .hero-links a:hover {
-      color: var(--black);
-    }
+    .entries { list-style: none; }
 
-    .hero-links a svg {
-      width: 14px;
-      height: 14px;
-      flex-shrink: 0;
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      margin-bottom: 72px;
-      opacity: 0;
-      animation: rise 0.6s ease forwards;
-    }
-
-    section:nth-child(2) { animation-delay: 0.15s; }
-    section:nth-child(3) { animation-delay: 0.25s; }
-    section:nth-child(4) { animation-delay: 0.35s; }
-    section:nth-child(5) { animation-delay: 0.45s; }
-
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--mid);
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* ── TIMELINE ENTRIES ── */
     .entry {
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 0 32px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-      position: relative;
+      grid-template-columns: 96px 1fr;
+      gap: 0 24px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .entry:last-child {
-      border-bottom: none;
+    .entry:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .when {
+      font-size: 12.5px;
+      color: var(--ink-dim);
+      white-space: pre-line;
+      line-height: 1.4;
+      padding-top: 3px;
     }
 
-    .entry-meta {
-      padding-top: 2px;
-    }
-
-    .entry-date {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--mid);
-      letter-spacing: 0.04em;
-      line-height: 1.5;
-    }
-
-    .entry-org {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--light);
-      letter-spacing: 0.04em;
-      margin-top: 4px;
-      line-height: 1.5;
-    }
-
-    .entry-body h3 {
-      font-size: 15px;
+    .entry h3 {
+      font-size: 15.5px;
       font-weight: 600;
-      color: var(--black);
-      letter-spacing: -0.3px;
-      margin-bottom: 10px;
-      line-height: 1.3;
+      line-height: 1.35;
+      letter-spacing: -0.015em;
     }
 
-    .entry-body p {
-      font-size: 14px;
-      color: #4B5563;
-      line-height: 1.7;
+    .at { color: var(--ink-dim); font-weight: 400; }
+
+    .entry p {
+      font-size: 13.5px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      margin-top: 3px;
+      max-width: 62ch;
     }
 
-    /* ── PUBLICATION ── */
-    .publication {
-      padding: 28px 0 28px 20px;
-      border-left: 2px solid var(--black);
+    .now h3::after {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--mark);
+      margin-left: 8px;
+      vertical-align: 3px;
     }
 
-    .pub-ref {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--blue);
-      letter-spacing: 0.06em;
-      margin-bottom: 10px;
-      text-transform: uppercase;
+    /* ── PUBLICATION ─────────────────────────── */
+    .pub { padding-left: 18px; border-left: 2px solid var(--mark); }
+    .pub cite { font-style: normal; font-weight: 600; font-size: 15.5px; letter-spacing: -0.015em; }
+    .pub .venue { font-size: 13px; color: var(--ink-dim); margin-top: 4px; }
+
+    .pub a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub a:hover { color: var(--mark); border-bottom-color: var(--mark); }
+
+    /* ── TOOLS ───────────────────────────────── */
+    .tools { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tools li {
+      list-style: none;
+      font-size: 12.5px;
+      color: var(--ink-mid);
+      background: var(--wash);
+      border-radius: 4px;
+      padding: 3px 9px;
     }
 
-    .publication p {
-      font-size: 14px;
-      color: #374151;
-      line-height: 1.7;
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 860px) {
+      .page { grid-template-columns: 1fr; gap: 44px; padding: 44px 22px 64px; }
+      .rail { position: static; }
+      .name { font-size: 29px; }
+      .stack { gap: 34px; }
     }
 
-    .pub-venue {
-      font-size: 13px;
-      color: var(--mid);
-      margin-top: 6px;
-      font-style: italic;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .header-inner {
-        padding: 0 20px;
-      }
-
-      nav a {
-        display: none;
-      }
-
-      main {
-        padding: 56px 20px 100px;
-      }
-
-      .hero {
-        margin-bottom: 64px;
-      }
-
-      .entry {
-        grid-template-columns: 1fr;
-        gap: 6px;
-      }
-
-      .entry-meta {
-        display: flex;
-        gap: 12px;
-        align-items: baseline;
-      }
-
-      .entry-org {
-        margin-top: 0;
-      }
+    @media (max-width: 480px) {
+      .entry { grid-template-columns: 1fr; gap: 2px; }
+      .when { white-space: normal; padding-top: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, section, .hero {
-        animation: none !important;
-        opacity: 1 !important;
-      }
+      .page { animation: none; }
+      * { transition: none !important; }
     }
 
-    :focus-visible {
-      outline: 2px solid var(--blue);
-      outline-offset: 3px;
-      border-radius: 4px;
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 3px; }
+
+    /* ── PRINT: usable one-page CV ────────────── */
+    @media print {
+      :root { --paper: #fff; --ink: #000; --ink-mid: #333; --ink-dim: #555; --rule: #ccc; --mark: #000; --wash: #eee; }
+      .page { animation: none; padding: 0; max-width: none; grid-template-columns: 250px 1fr; gap: 0 32px; }
+      .lang { display: none; }
+      .rail { position: static; }
+      a { border: 0 !important; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <a href="#" class="header-name">Alex Alonso Dalbøl</a>
-    <nav>
-      <a href="#experience" data-key="nav_experience">Experience</a>
-      <a href="#education" data-key="nav_education">Education</a>
-      <a href="#publications" data-key="nav_publications">Publications</a>
-      <div class="lang-switcher">
-        <button id="lang-en" class="active">EN</button>
-        <button id="lang-da">DA</button>
+<div class="page">
+
+  <aside class="rail">
+    <h1 class="name">Alex Alonso Dalbøl</h1>
+    <p class="role" data-key="role">Data scientist and research assistant</p>
+
+    <p class="bio" data-key="bio">Data Science graduate working at the intersection of AI, data analysis and education. I build human-in-the-loop systems, object detection models and interactive data tools, and I use them to support research and make complex data readable.</p>
+
+    <ul class="contact">
+      <li><a href="mailto:alexalonso@live.dk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 6.5L21 6"/></svg>
+        alexalonso@live.dk</a></li>
+      <li><a href="tel:+4542657699">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 006 6L16 13l5 2v3a2 2 0 01-2.2 2A17 17 0 014 5.2 2 2 0 016 3z"/></svg>
+        42 65 76 99</a></li>
+      <li><a href="https://github.com/alexdalboel" rel="me noopener" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        github.com/alexdalboel</a></li>
+      <li><a href="https://www.linkedin.com/in/alex-alonso-dalb%C3%B8l-7107a2218/" rel="me noopener" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn</a></li>
+      <li class="place" data-key="place">Odense, Denmark</li>
+    </ul>
+
+    <div class="lang" role="group" aria-label="Language / Sprog">
+      <button id="lang-en" aria-pressed="true" lang="en">EN</button>
+      <button id="lang-da" aria-pressed="false" lang="da">DA</button>
+    </div>
+  </aside>
+
+  <div class="stack">
+
+    <section>
+      <h2 data-key="h_experience">Experience</h2>
+      <ul class="entries">
+        <li class="entry now">
+          <p class="when" data-key="ra_date">Oct 2025 —
+now</p>
+          <div>
+            <h3><span data-key="ra_title">Research assistant</span>, <span class="at" data-key="ra_org">SDU</span></h3>
+            <p data-key="ra_desc">Educational science research on generative AI in schools — survey design, statistical analysis in R, and reporting.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <p class="when" data-key="ta_date">Sep 2024 —
+Jun 2025</p>
+          <div>
+            <h3><span data-key="ta_title">Teaching assistant</span>, <span class="at" data-key="ta_org">SDU</span></h3>
+            <p data-key="ta_desc">Weekly tutorials in linear algebra and statistics for data science students. Wrote supplementary material and brought Python and Jupyter into the coursework.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <p class="when" data-key="teacher_date">Feb 2023 —
+Jun 2026</p>
+          <div>
+            <h3><span data-key="teacher_title">Teacher</span>, <span class="at" data-key="teacher_org">Odense Kommune</span></h3>
+            <p data-key="teacher_desc">7th grade mathematics, English, history and PE.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-key="h_education">Education</h2>
+      <ul class="entries">
+        <li class="entry">
+          <p class="when" data-key="msc_date">2025</p>
+          <div>
+            <h3><span data-key="msc_title">MSc Data Science</span>, <span class="at" data-key="msc_org">SDU</span></h3>
+            <p data-key="msc_desc">Thesis: zero-shot object detection in Holocaust-related art — model performance and human-in-the-loop enhancement.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <p class="when" data-key="ba_date">2023</p>
+          <div>
+            <h3><span data-key="ba_title">BA Education</span>, <span class="at" data-key="ba_org">UCL</span></h3>
+            <p data-key="ba_desc">Teacher training, Odense. Subjects: English, history, religious studies.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-key="h_publications">Publications</h2>
+      <div class="pub">
+        <p><cite>Human-in-the-Loop Refinement of Zero-Shot Object Detection for Domain-Specific Artwork Datasets</cite></p>
+        <p class="venue" data-key="pub_venue">Dalbøl, Meinecke &amp; Jänicke (2026). VISAPP — 21st International Conference on Computer Vision Theory and Applications, vol. 2, pp. 103–116. Peer-reviewed.</p>
       </div>
-    </nav>
+    </section>
+
+    <section>
+      <h2 data-key="h_tools">Tools</h2>
+      <ul class="tools">
+        <li>Python</li><li>R</li><li>PyTorch</li><li>Jupyter</li>
+        <li data-key="t_stats">Statistics</li>
+        <li data-key="t_cv">Computer vision</li>
+        <li data-key="t_survey">Survey analysis</li>
+        <li data-key="t_viz">Data visualisation</li>
+        <li>Git</li>
+      </ul>
+    </section>
+
   </div>
-</header>
-
-<main>
-
-  <!-- HERO -->
-  <div class="hero" id="about">
-    <p class="hero-eyebrow" data-key="hero_eyebrow">Data Scientist · Research Assistant</p>
-    <h1>Alex Alonso Dalbøl</h1>
-    <p class="hero-bio" data-key="profile_text">
-      Data Science graduate with a strong foundation in AI, computer vision, and data analysis, complemented by a background in education and digital humanities. Experienced in developing human-in-the-loop systems, object detection models, and interactive data tools. Focused on leveraging technology to support research, interpret complex data, and create meaningful user experiences.
-    </p>
-    <div class="hero-meta">
-      <span class="hero-contact">42657699 · alexalonso@live.dk · Odense, DK</span>
-      <div class="hero-links">
-        <a href="https://github.com/alexdalboel" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/alex-alonso-dalb%C3%B8l-7107a2218/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <p class="section-label" data-key="experience_title">Experience</p>
-
-    <div class="entry">
-      <div class="entry-meta">
-        <div class="entry-date" data-key="ra_date">Oct 2025 —<br>Present</div>
-        <div class="entry-org" data-key="ra_org">SDU</div>
-      </div>
-      <div class="entry-body">
-        <h3 data-key="ra_job_title">Research Assistant</h3>
-        <p data-key="ra_job_desc">Contributing to research projects in educational science, focusing on data collection, analysis, and research at the intersection of technology, learning, and society.</p>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-meta">
-        <div class="entry-date" data-key="ta_date">Sep 2024 —<br>Jun 2025</div>
-        <div class="entry-org" data-key="ta_org">SDU</div>
-      </div>
-      <div class="entry-body">
-        <h3 data-key="ta_job_title">Teaching Assistant</h3>
-        <p data-key="ta_job_desc">Delivered weekly tutorials and Q&A sessions, helping students grasp foundational concepts in linear algebra and statistics relevant to data science. Designed supplementary learning materials and visual aids. Supported the integration of Python and Jupyter Notebooks into coursework.</p>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-meta">
-        <div class="entry-date" data-key="teacher_date">Feb 2023 —<br>Jun 2026</div>
-        <div class="entry-org" data-key="teacher_org">Odense Kommune</div>
-      </div>
-      <div class="entry-body">
-        <h3 data-key="teacher_job_title">Teacher</h3>
-        <p data-key="teacher_job_desc">Taught 7th grade in mathematics, English, history, and physical education. Fostered a positive and inclusive classroom environment, encouraging participation, collaboration, and critical thinking across all subjects.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <p class="section-label" data-key="education_title">Education</p>
-
-    <div class="entry">
-      <div class="entry-meta">
-        <div class="entry-date" data-key="msc_date">Jun 2025</div>
-        <div class="entry-org" data-key="msc_org">SDU</div>
-      </div>
-      <div class="entry-body">
-        <h3 data-key="msc_title">MSc, Data Science</h3>
-        <p data-key="msc_desc">Thesis: "Zero-shot Object Detection in Holocaust-related Art: Assessing Model Performance and Human-In-The-Loop Enhancement"</p>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="entry-meta">
-        <div class="entry-date" data-key="ba_date">Jan 2023</div>
-        <div class="entry-org" data-key="ba_org">UCL</div>
-      </div>
-      <div class="entry-body">
-        <h3 data-key="ba_title">BA, Education</h3>
-        <p data-key="ba_desc">University College Lillebaelt, Odense</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PUBLICATIONS -->
-  <section id="publications">
-    <p class="section-label" data-key="publications_title">Publications</p>
-
-    <div class="publication">
-      <p class="pub-ref" data-key="pub_ref">VISAPP 2026 · peer-reviewed</p>
-      <p data-key="pub_text">Dalbøl, A. A.; Meinecke, C. and Jänicke, S. (2026). Human-in-the-Loop Refinement of Zero-Shot Object Detection for Domain-Specific Artwork Datasets.</p>
-      <p class="pub-venue" data-key="pub_venue">In Proceedings of the 21st International Conference on Computer Vision Theory and Applications — Volume 2. ISBN 978-989-758-804-4, ISSN 2184-4321, pp. 103–116.</p>
-    </div>
-  </section>
-
-</main>
+</div>
 
 <script>
   const translations = {
     en: {
-      hero_eyebrow: "Data Scientist · Research Assistant",
-      nav_experience: "Experience",
-      nav_education: "Education",
-      nav_publications: "Publications",
-      profile_text: "Data Science graduate with a strong foundation in AI, computer vision, and data analysis, complemented by a background in education and digital humanities. Experienced in developing human-in-the-loop systems, object detection models, and interactive data tools. Focused on leveraging technology to support research, interpret complex data, and create meaningful user experiences.",
-      experience_title: "Experience",
-      ra_date: "Oct 2025 —\nPresent",
+      role: "Data scientist and research assistant",
+      bio: "Data Science graduate working at the intersection of AI, data analysis and education. I build human-in-the-loop systems, object detection models and interactive data tools, and I use them to support research and make complex data readable.",
+      place: "Odense, Denmark",
+      h_experience: "Experience",
+      h_education: "Education",
+      h_publications: "Publications",
+      h_tools: "Tools",
+      ra_date: "Oct 2025 —\nnow",
+      ra_title: "Research assistant",
       ra_org: "SDU",
-      ra_job_title: "Research Assistant",
-      ra_job_desc: "Contributing to research projects in educational science, focusing on data collection, analysis, and research at the intersection of technology, learning, and society.",
+      ra_desc: "Educational science research on generative AI in schools — survey design, statistical analysis in R, and reporting.",
       ta_date: "Sep 2024 —\nJun 2025",
+      ta_title: "Teaching assistant",
       ta_org: "SDU",
-      ta_job_title: "Teaching Assistant",
-      ta_job_desc: "Delivered weekly tutorials and Q&A sessions, helping students grasp foundational concepts in linear algebra and statistics relevant to data science. Designed supplementary learning materials and visual aids. Supported the integration of Python and Jupyter Notebooks into coursework.",
+      ta_desc: "Weekly tutorials in linear algebra and statistics for data science students. Wrote supplementary material and brought Python and Jupyter into the coursework.",
       teacher_date: "Feb 2023 —\nJun 2026",
+      teacher_title: "Teacher",
       teacher_org: "Odense Kommune",
-      teacher_job_title: "Teacher",
-      teacher_job_desc: "Taught 7th grade in mathematics, English, history, and physical education. Fostered a positive and inclusive classroom environment, encouraging participation, collaboration, and critical thinking across all subjects.",
-      education_title: "Education",
-      msc_date: "Jun 2025",
+      teacher_desc: "7th grade mathematics, English, history and PE.",
+      msc_date: "2025",
+      msc_title: "MSc Data Science",
       msc_org: "SDU",
-      msc_title: "MSc, Data Science",
-      msc_desc: 'Thesis: "Zero-shot Object Detection in Holocaust-related Art: Assessing Model Performance and Human-In-The-Loop Enhancement"',
-      ba_date: "Jan 2023",
+      msc_desc: "Thesis: zero-shot object detection in Holocaust-related art — model performance and human-in-the-loop enhancement.",
+      ba_date: "2023",
+      ba_title: "BA Education",
       ba_org: "UCL",
-      ba_title: "BA, Education",
-      ba_desc: "University College Lillebaelt, Odense",
-      publications_title: "Publications",
-      pub_ref: "VISAPP 2026 · peer-reviewed",
-      pub_text: "Dalbøl, A. A.; Meinecke, C. and Jänicke, S. (2026). Human-in-the-Loop Refinement of Zero-Shot Object Detection for Domain-Specific Artwork Datasets.",
-      pub_venue: "In Proceedings of the 21st International Conference on Computer Vision Theory and Applications — Volume 2. ISBN 978-989-758-804-4, ISSN 2184-4321, pp. 103–116."
+      ba_desc: "Teacher training, Odense. Subjects: English, history, religious studies.",
+      pub_venue: "Dalbøl, Meinecke & Jänicke (2026). VISAPP — 21st International Conference on Computer Vision Theory and Applications, vol. 2, pp. 103–116. Peer-reviewed.",
+      t_stats: "Statistics",
+      t_cv: "Computer vision",
+      t_survey: "Survey analysis",
+      t_viz: "Data visualisation"
     },
     da: {
-      hero_eyebrow: "Data Scientist · Videnskabelig Assistent",
-      nav_experience: "Erfaring",
-      nav_education: "Uddannelse",
-      nav_publications: "Publikationer",
-      profile_text: "Kandidat i Data Science med solid baggrund inden for AI, computer vision og dataanalyse — kombineret med erfaring inden for pædagogik og digital humaniora. Har udviklet human-in-the-loop-systemer, objektdetektionsmodeller og interaktive dataværktøjer. Brænder for at anvende teknologi til at understøtte forskning, formidle kompleks data og skabe meningsfulde brugeroplevelser.",
-      experience_title: "Erhvervserfaring",
-      ra_date: "Okt 2025 —\nNu",
+      role: "Data scientist og videnskabelig assistent",
+      bio: "Cand.scient. i Data Science, der arbejder i krydsfeltet mellem AI, dataanalyse og uddannelse. Jeg bygger human-in-the-loop-systemer, objektdetektionsmodeller og interaktive dataværktøjer — og bruger dem til at understøtte forskning og gøre komplekse data læsbare.",
+      place: "Odense, Danmark",
+      h_experience: "Erfaring",
+      h_education: "Uddannelse",
+      h_publications: "Publikationer",
+      h_tools: "Værktøjer",
+      ra_date: "Okt 2025 —\nnu",
+      ra_title: "Videnskabelig assistent",
       ra_org: "SDU",
-      ra_job_title: "Forskningsassistent",
-      ra_job_desc: "Bidrager til forskningsprojekter inden for uddannelsesvidenskab med fokus på dataindsamling, analyse og forskning på tværs af teknologi, læring og samfund.",
+      ra_desc: "Uddannelsesvidenskabelig forskning i generativ AI i skolen — spørgeskemadesign, statistisk analyse i R og afrapportering.",
       ta_date: "Sep 2024 —\nJun 2025",
+      ta_title: "Undervisningsassistent",
       ta_org: "SDU",
-      ta_job_title: "Undervisningsassistent",
-      ta_job_desc: "Afholdt ugentlige øvelsestimer og Q&A-sessioner med fokus på lineær algebra og statistik. Udarbejdede supplerende materialer og bidrog til integration af Python og Jupyter Notebooks i undervisningen.",
+      ta_desc: "Ugentlige øvelsestimer i lineær algebra og statistik for datalogistuderende. Udarbejdede supplerende materiale og integrerede Python og Jupyter i undervisningen.",
       teacher_date: "Feb 2023 —\nJun 2026",
+      teacher_title: "Lærer",
       teacher_org: "Odense Kommune",
-      teacher_job_title: "Lærer",
-      teacher_job_desc: "Underviste 7. klasse i matematik, engelsk, historie og idræt. Skabte et positivt og inkluderende læringsmiljø, der fremmede deltagelse, samarbejde og kritisk tænkning.",
-      education_title: "Uddannelse",
-      msc_date: "Jun 2025",
+      teacher_desc: "7. klasse i matematik, engelsk, historie og idræt.",
+      msc_date: "2025",
+      msc_title: "Cand.scient. i Data Science",
       msc_org: "SDU",
-      msc_title: "Cand.Scient. i Data Science",
-      msc_desc: 'Speciale: "Zero-shot Object Detection in Holocaust-related Art: Assessing Model Performance and Human-In-The-Loop Enhancement"',
-      ba_date: "Jan 2023",
+      msc_desc: "Speciale: zero-shot objektdetektion i Holocaust-relateret kunst — modelperformance og human-in-the-loop-forbedring.",
+      ba_date: "2023",
+      ba_title: "Professionsbachelor, lærer",
       ba_org: "UCL",
-      ba_title: "BA som folkeskolelærer",
-      ba_desc: "University College Lillebælt, Odense",
-      publications_title: "Publikationer",
-      pub_ref: "VISAPP 2026 · fagfællebedømt",
-      pub_text: "Dalbøl, A. A.; Meinecke, C. and Jänicke, S. (2026). Human-in-the-Loop Refinement of Zero-Shot Object Detection for Domain-Specific Artwork Datasets.",
-      pub_venue: "In Proceedings of the 21st International Conference on Computer Vision Theory and Applications — Volume 2. ISBN 978-989-758-804-4, ISSN 2184-4321, pp. 103–116."
+      ba_desc: "Læreruddannelsen, Odense. Undervisningsfag: engelsk, historie og kristendomskundskab.",
+      pub_venue: "Dalbøl, Meinecke & Jänicke (2026). VISAPP — 21st International Conference on Computer Vision Theory and Applications, bind 2, s. 103–116. Fagfællebedømt.",
+      t_stats: "Statistik",
+      t_cv: "Computer vision",
+      t_survey: "Spørgeskemaanalyse",
+      t_viz: "Datavisualisering"
     }
   };
 
-  const langEnBtn = document.getElementById('lang-en');
-  const langDaBtn = document.getElementById('lang-da');
+  const buttons = { en: document.getElementById('lang-en'), da: document.getElementById('lang-da') };
 
   function setLanguage(lang) {
-    const trans = translations[lang];
+    const t = translations[lang] || translations.en;
     document.querySelectorAll('[data-key]').forEach(el => {
-      const key = el.getAttribute('data-key');
-      if (trans[key]) el.textContent = trans[key];
+      const value = t[el.dataset.key];
+      if (value) el.textContent = value;
     });
-    langEnBtn.classList.toggle('active', lang === 'en');
-    langDaBtn.classList.toggle('active', lang === 'da');
-    localStorage.setItem('language', lang);
+    for (const key in buttons) buttons[key].setAttribute('aria-pressed', String(key === lang));
     document.documentElement.lang = lang;
+    try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
-  langEnBtn.addEventListener('click', () => setLanguage('en'));
-  langDaBtn.addEventListener('click', () => setLanguage('da'));
+  for (const key in buttons) buttons[key].addEventListener('click', () => setLanguage(key));
 
-  const saved = localStorage.getItem('language') || 'en';
-  setLanguage(saved);
+  let saved;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  setLanguage(saved || ((navigator.language || '').startsWith('da') ? 'da' : 'en'));
 </script>
 </body>
 </html>
